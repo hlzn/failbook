@@ -1,0 +1,1 @@
+Look for Microsoft docs Safe storge of app secrets in development in ASP.Net Core
