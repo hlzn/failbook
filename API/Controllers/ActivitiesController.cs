@@ -13,7 +13,6 @@ using Persistance;
 
 namespace API.Controllers
 {
-    [AllowAnonymous]
     public class ActivitiesController : BaseApiController
     {
         [HttpGet]
@@ -34,6 +33,7 @@ namespace API.Controllers
             return HandleResult(await Mediator.Send(new Create.Command{Activity = activity}));
         }
 
+        [Authorize(Policy = "IsActivityHost")]
         [HttpPut("{id}")]
         public async Task<IActionResult> EditActivity(Guid id, Activity activity)
         {
@@ -45,6 +45,12 @@ namespace API.Controllers
         public async Task<IActionResult> DeleteActivity([FromRoute]string id)
         {
             return HandleResult(await Mediator.Send(new Delete.Command{ Id = Guid.Parse(id) }));
+        }
+
+        [HttpPost("{id}/attend")]
+        public async Task<ActionResult> Attend(Guid id)
+        {
+            return HandleResult(await Mediator.Send(new UpdateAttendance.Command{Id = id}));
         }
     }
 }
