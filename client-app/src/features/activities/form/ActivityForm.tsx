@@ -29,7 +29,10 @@ export default observer(function ActivityForm(){
         description: '',
         date: null,
         city: '',
-        venue: ''
+        venue: '',
+        hostUsername: '',
+        isCancelled: false,
+        attendees: []
     });
 
     useEffect(() => {

@@ -1,3 +1,5 @@
+import { Profile } from "./prodile";
+
 export interface Activity {
     id: string;
     title: string;
@@ -6,4 +8,10 @@ export interface Activity {
     category: string;
     city: string;
     venue: string;
+    hostUsername: string;
+    isHost?: boolean;
+    host?: Profile;
+    isGoing?: boolean;
+    isCancelled: boolean;
+    attendees?: Profile[];
 }
